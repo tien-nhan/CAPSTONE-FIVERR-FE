@@ -1,0 +1,16 @@
+a {
+  -webkit-text-decoration-skip: objects;
+  background-color: initial;
+  color: #1890ff;
+  cursor: pointer;
+  outline: none;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+body {
+  font-size: 14px;
+  line-height: 1.5; /* Tùy chọn, để cải thiện khả năng đọc */
+}
+.container {
+  padding: 0 15px !important;
+}

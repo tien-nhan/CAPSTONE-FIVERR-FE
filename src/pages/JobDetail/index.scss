@@ -1,0 +1,170 @@
+.job-detail {
+  padding: 80px 0;
+  position: relative !important;
+  .check-out {
+    border: 1px solid #dadbdd;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    .check-out-header {
+      ul {
+        .nav-item {
+          width: 33.33333%;
+          .nav-link {
+            background-color: #fafafa;
+            border-bottom: 2px solid #dadbdd;
+            border-radius: 0;
+            color: #74767e;
+            font-weight: 700;
+            padding: 16px;
+            width: 100%;
+          }
+          .nav-link.active {
+            background-color: #fff;
+            border-bottom: 2px solid #1dbf73;
+            color: #1dbf73;
+          }
+        }
+      }
+    }
+    .check-out-body {
+      padding: 24px;
+      .price {
+        .title {
+          font-size: 24px;
+          font-weight: 600;
+        }
+      }
+      .description {
+        color: #62646a;
+        margin: 20px 0 !important;
+      }
+      .additional-info {
+        svg {
+          fill: #62646a;
+        }
+        span {
+          color: #62646a;
+          font-weight: 600;
+        }
+      }
+      .fearture {
+        span {
+          color: #95979d;
+          font-weight: 600;
+          margin-bottom: 2px;
+        }
+      }
+    }
+    .check-out-footer {
+      padding: 0 24px 12px;
+      .submit {
+        background-color: #1dbf73;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        color: #fff;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 100%;
+        padding: 12px 24px;
+        position: relative;
+        text-align: center;
+        transition: 70ms cubic-bezier(0.75, 0, 0.25, 1);
+        width: 100%;
+      }
+      .compare {
+        color: #1dbf73;
+        display: inline-block;
+        font-size: 16px;
+        font-weight: 600;
+        padding: 12px;
+        text-align: center;
+        width: 100%;
+      }
+    }
+  }
+  .job-detail-link {
+    margin-bottom: 10px;
+    a {
+      color: #446ee7;
+      font-size: 16px;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    svg {
+      height: 12px;
+      margin: 0 7px;
+      width: 12px;
+    }
+  }
+  .job-detail-info {
+    color: #62646a;
+    .job-title {
+      color: #404145;
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .seller-overview {
+      .seller-name {
+        color: #404145;
+        cursor: pointer;
+        font-weight: 700;
+        text-transform: capitalize;
+      }
+      .seller-level {
+        font-weight: 500;
+      }
+      .ant-rate {
+        margin-top: 0.5rem;
+      }
+      .seller-star-rating:before {
+        color: #c5c6c9;
+        content: "|";
+        margin-right: 9px;
+      }
+      .seller-star-rating:after {
+        color: #c5c6c9;
+        content: "|";
+        margin-left: 9px;
+      }
+      .seller-ordered {
+        color: #95979d;
+        font-weight: 500;
+      }
+    }
+    .job-img {
+      overflow: hidden;
+      img {
+        transition: all 0.5s ease;
+      }
+      img:hover {
+        -webkit-transform: scale(1.1);
+        transform: scale(1.1);
+      }
+    }
+    .job-description h2 {
+      color: #404145;
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 30px;
+    }
+    .job-description .description {
+      border-bottom: 1px solid #c5c6c9;
+      color: #62646a;
+      font-size: 500;
+      font-size: 18px;
+      padding-bottom: 20px;
+    }
+  }
+  .star-score {
+    color: #ffb33e;
+    font-weight: 700;
+    margin: 0 4px;
+  }
+  .rating {
+    font-weight: 500;
+  }
+}

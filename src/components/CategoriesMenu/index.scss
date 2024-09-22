@@ -1,0 +1,88 @@
+.CategoriesMenu {
+  background-color: #fff;
+  border-bottom: 1px solid #e4e5e7;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 81px;
+  transition: all 0.5s ease;
+  z-index: 990;
+  .categoriesmenu_wrapper {
+    background-color: #fff;
+    width: 100%;
+  }
+  .categoriesmenu_row {
+    background-color: #fff;
+    box-sizing: border-box;
+    padding: 0 110px;
+    width: 100%;
+  }
+  .categoriesmenu_ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 0;
+    .categoriesmenu_li {
+      .categoriesmenu_li_jobdetail {
+        background-color: #fff;
+        border: 1px solid #e4e5e7;
+        box-shadow: 0 1px 3px #dadbdd;
+        display: none;
+        padding: 20px 30px;
+        position: absolute;
+        text-align: left;
+        z-index: 1001;
+        .categoriesmenu_li_jobdetail_detail {
+          color: #404145;
+          font-size: 16px;
+          font-weight: 500;
+          margin: 0;
+          padding: 8px 0;
+        }
+        .categoriesmenu_li_jobdetail_detail_job {
+          color: #62646a;
+          font-size: 16px;
+          font-weight: 300;
+          margin: 0 0 5px;
+          padding: 0;
+        }
+        .categoriesmenu_li_jobdetail_detail_job:hover {
+          color: #1dbf73;
+        }
+      }
+      .links {
+        color: #62646a;
+        display: block;
+        font-size: 16px;
+        line-height: 24px;
+        padding: 8px 0;
+        position: relative;
+        text-decoration: none;
+        width: -webkit-max-content;
+        width: max-content;
+      }
+      .links:after {
+        background: #1dbf73;
+        bottom: 0;
+        content: "";
+        height: 3px;
+        left: 0;
+        position: absolute;
+        transition: all 0.3s;
+        width: 0;
+        z-index: 1;
+      }
+      .links:hover {
+        color: #1dbf73;
+      }
+      .links:hover:after {
+        width: 100%;
+      }
+    }
+    .categoriesmenu_li:hover .categoriesmenu_li_jobdetail {
+      display: block;
+    }
+  }
+}
