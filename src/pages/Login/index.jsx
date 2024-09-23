@@ -24,48 +24,86 @@ const Index = () => {
   const onDangNhap = (e) => {
     e.preventDefault();
     onLogin(state).then((s) => {
-      navigate("/");
+      navigate("/categories");
     });
   };
   return (
-    <div className="container-custom">
-      <div className="form-wrapper">
-        <h1>Đăng nhập</h1>
-        <form className="form" autoComplete="off">
-          <div className="input-group">
-            <div>Tài khoản</div>
-            <input
-              type="text"
-              name="floating_email"
-              id="floating_email"
-              placeholder=" "
-              required
-              onChange={onChange("email")}
-              value={state.email}
-            />
+    <section className="sign-in">
+      <div className="container_form">
+        <div className="signin-content">
+          <div className="signin-image">
+            <figure>
+              <img
+                src="https://demo5.cybersoft.edu.vn/static/media/signin.6f1c72291c1ec0817ded.jpg"
+                alt="sign up"
+                className="w-100"
+              />
+            </figure>
           </div>
-          <div className="input-group">
-            <div>Mật khẩu</div>
-            <input
-              type="password"
-              name="floating_password"
-              id="floating_password"
-              placeholder=" "
-              onChange={onChange("password")}
-              value={state.password}
-            />
+          <div className="signin-form">
+            <h2 className="form-title mb-5">Sign In to Fiverr</h2>
+            <form className="login-form" id="login-form">
+              <div className="d-flex flex-row align-items-center mb-4">
+                <i className="fas fa-user fa-lg me-3"></i>
+                <div className="form-outline flex-fill mb-0">
+                  <input
+                    className="form-control"
+                    id="email"
+                    name="email"
+                    required
+                    placeholder="Your Email"
+                  />
+                  <div className="text-danger position-absolute mt-1"></div>
+                </div>
+              </div>
+              <div className="d-flex flex-row align-items-center mb-4">
+                <i className="fas fa-lock fa-lg me-3"></i>
+                <div
+                  className="form-outline flex-fill mb-0"
+                  style={{ position: "relative" }}
+                >
+                  <input
+                    type="password"
+                    className="form-control"
+                    id="password"
+                    name="password"
+                    required
+                    placeholder="Your Password"
+                  />
+                  <div className="text-danger position-absolute mt-1"></div>
+                  <button
+                    type="button"
+                    className="show"
+                    style={{
+                      position: "absolute",
+                      top: "8.5px",
+                      right: "10px",
+                      border: "none",
+                      opacity: 0.5,
+                      background: "none",
+                    }}
+                  >
+                    <i className="fas fa-eye"></i>
+                  </button>
+                </div>
+              </div>
+              <div className="form-group register d-flex justify-content-start align-items-baseline gap-3 ms-5 mt-5">
+                <button
+                  className="btn btn-success login"
+                  type="button"
+                  onClick={onDangNhap}
+                >
+                  Login
+                </button>
+                <a className="text_register" onClick={onDangKy}>
+                  Register now?
+                </a>
+              </div>
+            </form>
           </div>
-          <div className="button-group">
-            <button type="submit" onClick={onDangNhap}>
-              Đăng nhập
-            </button>
-            <button type="button" onClick={onDangKy}>
-              Đăng ký
-            </button>
-          </div>
-        </form>
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 

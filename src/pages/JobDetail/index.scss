@@ -158,6 +158,197 @@
       font-size: 18px;
       padding-bottom: 20px;
     }
+    .about-seller {
+      h2 {
+        color: #404145;
+        font-size: 20px;
+        font-weight: 700;
+        margin-bottom: 30px;
+      }
+      .profile-img {
+        width: 110px;
+        height: 110px;
+      }
+      .profile-label {
+        .seller-name {
+          color: #62646a;
+          cursor: pointer;
+          font-size: 18px;
+          font-weight: 700;
+          margin-bottom: 4px;
+          text-transform: capitalize;
+        }
+        p {
+          color: #62646a;
+          font-size: 16px;
+          font-weight: 500;
+          margin-bottom: 4px;
+        }
+        .contact {
+          background-color: initial;
+          border: 1px solid #74767e;
+          border-radius: 5px;
+          color: #74767e;
+          font-weight: 600;
+          margin-top: 20px;
+          padding: 8px 24px;
+          transition: 70ms cubic-bezier(0.75, 0, 0.25, 1);
+        }
+        .contact:hover {
+          background-color: #74767e;
+          color: #fff;
+        }
+      }
+    }
+    .FAQ h2 {
+      color: #404145;
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 30px;
+    }
+    .rating-section {
+      margin-top: 40px;
+      .review-count {
+        .count {
+          h2 {
+            color: #404145;
+            font-size: 20px;
+            font-weight: 700;
+          }
+        }
+        .sort {
+          .pre-title {
+            color: #74767e;
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 22px;
+            padding: 0 10px;
+          }
+          select {
+            border: none;
+            color: #222325;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            outline: none;
+            padding-right: 5px;
+          }
+        }
+      }
+      .review-rating {
+        .stars-counters {
+          .star-title-container {
+            width: 21%;
+            button {
+              background-color: initial;
+              border: none;
+              border-radius: 5px;
+              color: #446ee7;
+              cursor: pointer;
+              font-size: 16px;
+              font-weight: 600;
+              margin-bottom: 5px;
+              padding: 3px 5px;
+              transition: 70ms cubic-bezier(0.75, 0, 0.25, 1);
+            }
+          }
+          .process-bar-container {
+            margin: auto;
+            padding: 5px;
+            width: 100%;
+            .process-bar {
+              background: #e4e5e7;
+              border-radius: 999px;
+              height: 8px;
+              position: relative;
+              width: 100%;
+            }
+            .process-bar.first:after {
+              background-color: #ffb33e;
+              border-radius: 999px;
+              content: "";
+              height: 8px;
+              position: absolute;
+              width: 95%;
+            }
+          }
+          .star-num {
+            color: #446ee7;
+            font-size: 16px;
+            font-weight: 500;
+            padding-bottom: 5px;
+          }
+        }
+        .ranking {
+          h5 {
+            font-size: 16px;
+            font-weight: 600;
+            margin: 5px 0 15px;
+          }
+          p {
+            color: #95979d;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 0;
+          }
+        }
+      }
+      .review-filter {
+        border-bottom: 1px solid #c5c6c9;
+        padding-bottom: 20px;
+      }
+    }
+    .review-comment {
+      li {
+        border-bottom: 1px solid #c5c6c9;
+      }
+      .reviewer-name h3 {
+        color: #404145;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 24px;
+        margin-right: 6px;
+      }
+      .reviewer-country {
+        margin-bottom: 20px;
+        .country-name {
+          color: #62646a;
+          font-weight: 500;
+        }
+      }
+      .comment {
+        color: #404145;
+        font-size: 16px;
+      }
+      .reviewer-helpful {
+        margin-top: 8px;
+        .helpful-title {
+          color: #404145;
+          font-weight: 600;
+        }
+        .helpful-thumb {
+          svg {
+            cursor: pointer;
+          }
+          span {
+            cursor: pointer;
+            font-weight: 600;
+          }
+        }
+      }
+    }
+    .add-comment {
+      h2 {
+        color: #404145;
+        font-size: 20px;
+        font-weight: 700;
+        margin-bottom: 30px;
+      }
+      button {
+        background-color: #1dbf73;
+        font-weight: 500;
+      }
+    }
   }
   .star-score {
     color: #ffb33e;

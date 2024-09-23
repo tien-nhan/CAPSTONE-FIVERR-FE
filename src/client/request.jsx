@@ -14,7 +14,7 @@ client.interceptors.request.use(
   function (config) {
     config.headers = {
       ...config.headers,
-      TokenCybersoft: `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZW5Mb3AiOiJCb290Y2FtcCBETiAxMSIsIkhldEhhblN0cmluZyI6IjIyLzAxLzIwMjUiLCJIZXRIYW5UaW1lIjoiMTczNzUwNDAwMDAwMCIsIm5iZiI6MTcwOTc0NDQwMCwiZXhwIjoxNzM3NjUxNjAwfQ.nl0s6U9TVtfCtNNz9yMfG6ZupTn18NciJE96XGDOTmQ`,
+      TokenCybersoft: `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZW5Mb3AiOiJCb290Y2FtcCBETiAxMSIsIkhldEhhblN0cmluZyI6IjE3LzAyLzIwMjUiLCJIZXRIYW5UaW1lIjoiMTczOTc1MDQwMDAwMCIsIm5iZiI6MTcwOTc0NDQwMCwiZXhwIjoxNzM5ODk4MDAwfQ.qvs2zsWDKR2CRt273FQIadSYJzZM-hCro_nsLVpa-Wg`,
     };
     const tail = config?.url?.split("/")[config?.url?.split("/")?.length - 1];
     const token = localStorage.getItem("access_token");
@@ -23,7 +23,7 @@ client.interceptors.request.use(
       tail?.toLowerCase() !== "dangnhap" &&
       tail?.toLowerCase() !== "dangky"
     ) {
-      config.headers.Authorization = `Bearer ${token}`;
+      config.headers.Token = `${token}`;
     }
     return config;
   },

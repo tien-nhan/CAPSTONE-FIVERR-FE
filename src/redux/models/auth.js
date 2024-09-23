@@ -24,7 +24,7 @@ export default {
             resolve(s);
           })
           .catch((e) => {
-            message.error(e.message);
+            message.error(e.content);
             reject(e);
           });
       });
@@ -38,7 +38,7 @@ export default {
             resolve(s);
           })
           .catch((e) => {
-            message.error(e.message);
+            message.error(e.content);
             reject(e);
           });
       });

@@ -1,5 +1,6 @@
 import auth from "./auth";
-import quanLyNguoiDung from "./quanLyNguoiDung";
+import quanLyDanhMuc from "./quanLyDanhMuc";
 import congViec from "./congViec";
+import binhLuan from "./binhLuan";
 
-export { auth, quanLyNguoiDung, congViec };
+export { auth, quanLyDanhMuc, congViec, binhLuan };

@@ -3,16 +3,14 @@ import { Route, Routes } from "react-router-dom";
 import PrivateRoute from "./PrivateRoutes";
 import Register from "../pages/Register";
 import Login from "../pages/Login";
-import Films from "../pages/Films";
-import AddNewFilm from "../pages/AddNewFilm";
-import AddNewNguoiDung from "../pages/AddNewNguoiDung";
-import ShowTime from "../pages/ShowTime";
 import Information from "../pages/Information";
-import QuanLyNguoiDung from "../pages/QuanLyNguoiDung";
-import Profile from "../pages/Profile";
 import HomeCategories from "../pages/HomeCategories";
 import PublicPage from "../pages/PublicPage";
 import JobDetail from "../pages/JobDetail";
+// import QuanLyNguoiDung from "../pages/QuanLyNguoiDung";
+// import QuanLyCongViec from "../pages/QuanLyCongViec";
+// import QuanLyLoaiCongViec from "../pages/QuanLyLoaiCongViec";
+// import QuanLyDichVu from "../pages/QuanLyDichVu";
 
 const AppRoutes = () => {
   return (
@@ -27,29 +25,39 @@ const AppRoutes = () => {
       />
 
       <Route
-        path="/profile"
-        element={
-          <Suspense fallback={<div>loading...</div>}>
-            <Profile />
-          </Suspense>
-        }
-      />
-      <Route
         path="/login"
         element={
           <Suspense fallback={<div>loading...</div>}>
-            <Login />
+            <PublicPage />
           </Suspense>
         }
-      />
+      >
+        <Route
+          path=""
+          element={
+            <Suspense fallback={<div>loading...</div>}>
+              <Login />
+            </Suspense>
+          }
+        />
+      </Route>
       <Route
         path="/register"
         element={
           <Suspense fallback={<div>loading...</div>}>
-            <Register />
+            <PublicPage />
           </Suspense>
         }
-      />
+      >
+        <Route
+          path=""
+          element={
+            <Suspense fallback={<div>loading...</div>}>
+              <Register />
+            </Suspense>
+          }
+        />
+      </Route>
       <Route
         path="/jobDetail"
         element={
@@ -93,7 +101,7 @@ const AppRoutes = () => {
           }
         />
       </Route>
-      <Route
+      {/* <Route
         path="/admin"
         element={
           <Suspense fallback={<div>loading...</div>}>
@@ -102,39 +110,7 @@ const AppRoutes = () => {
         }
       >
         <Route
-          path="films"
-          element={
-            <Suspense fallback={<div>loading...</div>}>
-              <Films />
-            </Suspense>
-          }
-        />
-        <Route
-          path="films/addnew"
-          element={
-            <Suspense fallback={<div>loading...</div>}>
-              <AddNewFilm />
-            </Suspense>
-          }
-        />
-        <Route
-          path="films/edit/:maPhim"
-          element={
-            <Suspense fallback={<div>loading...</div>}>
-              <AddNewFilm />
-            </Suspense>
-          }
-        />
-        <Route
-          path="films/showtime/:maPhim"
-          element={
-            <Suspense fallback={<div>loading...</div>}>
-              <ShowTime />
-            </Suspense>
-          }
-        />
-        <Route
-          path="quanlynguoidung"
+          path="quan-ly-nguoi-dung"
           element={
             <Suspense fallback={<div>loading...</div>}>
               <QuanLyNguoiDung />
@@ -142,22 +118,30 @@ const AppRoutes = () => {
           }
         />
         <Route
-          path="quanlynguoidung/addnew"
+          path="quan-ly-cong-viec"
           element={
             <Suspense fallback={<div>loading...</div>}>
-              <AddNewNguoiDung />
+              <QuanLyCongViec />
             </Suspense>
           }
         />
         <Route
-          path="quanlynguoidung/edit"
+          path="quan-ly-loai-cong-viec"
           element={
             <Suspense fallback={<div>loading...</div>}>
-              <AddNewNguoiDung />
+              <QuanLyLoaiCongViec />
             </Suspense>
           }
         />
-      </Route>
+        <Route
+          path="quan-ly-dich-vu"
+          element={
+            <Suspense fallback={<div>loading...</div>}>
+              <QuanLyDichVu />
+            </Suspense>
+          }
+        />
+      </Route> */}
       <Route
         path="/thongtincanhan"
         element={

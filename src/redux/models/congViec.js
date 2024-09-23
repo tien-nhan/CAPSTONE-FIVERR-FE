@@ -18,7 +18,7 @@ export default {
             dispatch.congViec.updateData({ menuLoaiCongViec: s });
           })
           .catch((e) => {
-            message.error(e.message);
+            message.error(e.content);
             reject(e);
           });
       });
@@ -32,7 +32,7 @@ export default {
             dispatch.congViec.updateData({ dsCongViec: s });
           })
           .catch((e) => {
-            message.error(e.message);
+            message.error(e.content);
             reject(e);
           });
       });
@@ -46,7 +46,7 @@ export default {
             dispatch.congViec.updateData({ dsCongViec: s });
           })
           .catch((e) => {
-            message.error(e.message);
+            message.error(e.content);
             reject(e);
           });
       });
@@ -60,7 +60,7 @@ export default {
             dispatch.congViec.updateData({ chiTietCongViec: s[0] });
           })
           .catch((e) => {
-            message.error(e.message);
+            message.error(e.content);
             reject(e);
           });
       });

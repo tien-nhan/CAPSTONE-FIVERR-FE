@@ -1,13 +1,10 @@
 import { client } from "../client/request";
 
 export default {
-  login: ({ email, password = "" }) => {
+  layBinhLuanTheoCongViec: (maCongViec) => {
     return new Promise((resolve, reject) => {
       client
-        .post(`/api/auth/signin`, {
-          email,
-          password,
-        })
+        .get(`/api/binh-luan/lay-binh-luan-theo-cong-viec/${maCongViec}`)
         .then((s) => {
           if (s?.statusCode <= 400) {
             resolve(s?.content);
@@ -18,10 +15,10 @@ export default {
         });
     });
   },
-  register: (payload) => {
+  binhLuan: (payload) => {
     return new Promise((resolve, reject) => {
       client
-        .post(`/api/auth/signup`, payload)
+        .post(`/api/binh-luan`, payload)
         .then((s) => {
           if (s?.statusCode <= 400) {
             resolve(s?.content);

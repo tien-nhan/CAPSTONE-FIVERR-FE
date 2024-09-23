@@ -1,7 +1,44 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Breadcrumb from "./Breadcrumb";
-import { Rate } from "antd";
-import { useSelector } from "react-redux";
+import { Button, Collapse, Form, Input, Rate } from "antd";
+import { useDispatch, useSelector } from "react-redux";
+import dayjs from "dayjs";
+
+const items = [
+  {
+    key: "1",
+    label: "There are many passages but the majority?",
+    children: (
+      <div>
+        Voluptates amet earum velit nobis aliquam laboriosam nihil debitis
+        facere voluptatibus consectetur quae quasi fuga, ad corrupti libero
+        omnis sapiente non assumenda, incidunt officiis eaque iste minima autem.
+      </div>
+    ),
+  },
+  {
+    key: "2",
+    label: "There are many passages but the majority?",
+    children: (
+      <div>
+        Voluptates amet earum velit nobis aliquam laboriosam nihil debitis
+        facere voluptatibus consectetur quae quasi fuga, ad corrupti libero
+        omnis sapiente non assumenda, incidunt officiis eaque iste minima autem.
+      </div>
+    ),
+  },
+  {
+    key: "3",
+    label: "There are many passages but the majority?",
+    children: (
+      <div>
+        Voluptates amet earum velit nobis aliquam laboriosam nihil debitis
+        facere voluptatibus consectetur quae quasi fuga, ad corrupti libero
+        omnis sapiente non assumenda, incidunt officiis eaque iste minima autem.
+      </div>
+    ),
+  },
+];
 
 const Left = () => {
   const { chiTietCongViec = {} } = useSelector((state) => state.congViec);
@@ -12,16 +49,16 @@ const Left = () => {
       <div className="job-detail-info">
         <h1 className="job-title">{chiTietCongViec.tenCongViec}</h1>
         <SellerOverview chiTietCongViec={chiTietCongViec} />
-        <div class="job-img mt-3">
+        <div className="job-img mt-3">
           <img
-            class="img-fluid w-100"
+            className="img-fluid w-100"
             src={chiTietCongViec.congViec?.hinhAnh}
             alt="..."
           />
         </div>
-        <div class="job-description mt-5">
+        <div className="job-description mt-5">
           <h2>About This Gig</h2>
-          <div class="description">
+          <div className="description">
             About this gig Welcome to my custom, modern, creative and unique
             logo design service. I do much appreciate for taking your valuable
             time to monitor my gig. Are you looking for a custom or professional
@@ -32,7 +69,12 @@ const Left = () => {
             Smooth &amp; minimalist Wor
           </div>
         </div>
-        <AboutSeller chiTietCongViec={chiTietCongViec}/>
+        <AboutSeller chiTietCongViec={chiTietCongViec} />
+        <div className="FAQ mt-5">
+          <h2>FAQ</h2>
+          <Collapse items={items} />
+        </div>
+        <RatingSection chiTietCongViec={chiTietCongViec} />
       </div>
     </div>
   );
@@ -77,43 +119,283 @@ const SellerOverview = ({ chiTietCongViec }) => {
     </div>
   );
 };
-const AboutSeller = ({
-  avatarUrl,
-  sellerName,
-  sellerRole,
-  rating,
-  orderCount,
-}) => {
+const AboutSeller = ({ chiTietCongViec }) => {
   return (
     <div className="about-seller mt-5">
       <h2>About The Seller</h2>
       <div className="profile d-flex gap-3">
-        <div
-          className="profile-img"
-          style={{ width: "110px", height: "110px" }}
-        >
+        <div className="profile-img">
           <img
             className="w-100 rounded-circle"
-            src={avatarUrl}
+            src={chiTietCongViec.avatar}
             alt="Seller Avatar"
           />
         </div>
         <div className="profile-label">
-          <h3 className="seller-name">{sellerName}</h3>
-          <p>{sellerRole}</p>
+          <h3 className="seller-name">{chiTietCongViec.tenNguoiTao}</h3>
+          <p>{chiTietCongViec.tenChiTietLoai}</p>
           <div className="seller-star-rating d-flex align-items-center">
             <Rate
               disabled
-              value={rating}
+              value={chiTietCongViec.congViec?.saoCongViec}
               style={{ color: "rgb(255, 179, 62)" }}
             />
-            <div className="star-score">{rating}</div>
-            <div className="rating">({orderCount})</div>
+            <div className="star-score">
+              {chiTietCongViec.congViec?.saoCongViec}
+            </div>
+            <div className="rating">({chiTietCongViec.congViec?.danhGia})</div>
           </div>
           <button className="contact" type="primary">
             Contact Me
           </button>
         </div>
+      </div>
+    </div>
+  );
+};
+
+const ReviewItem = ({ data = {} }) => {
+  return (
+    <li className="row py-4">
+      <div className="reviewer-avatar col-2">
+        <img
+          src={data.avatar}
+          alt="Reviewer"
+          className="rounded-circle w-100"
+        />
+      </div>
+      <div className="reviewer-comment col-10">
+        <div className="reviewer-name d-flex">
+          <h3>{data.tenNguoiBinhLuan}</h3>
+          <span className="star">
+            <svg
+              width="16"
+              height="15"
+              viewBox="0 0 16 15"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill="#ffb33e"
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M16 5.81285C16 5.98299 15.875 6.14367 15.75 6.26654L12.2596 9.61248L13.0865 14.3384C13.0962 14.4045 13.0962 14.4612 13.0962 14.5274C13.0962 14.7732 12.9808 15 12.7019 15C12.5673 15 12.4327 14.9527 12.3173 14.8866L8 12.656L3.68269 14.8866C3.55769 14.9527 3.43269 15 3.29808 15C3.01923 15 2.89423 14.7732 2.89423 14.5274C2.89423 14.4612 2.90385 14.4045 2.91346 14.3384L3.74038 9.61248L0.240385 6.26654C0.125 6.14367 0 5.98299 0 5.81285C0 5.5293 0.298077 5.41588 0.538462 5.37807L5.36539 4.68809L7.52885 0.387524C7.61539 0.207939 7.77885 0 8 0C8.22115 0 8.38462 0.207939 8.47115 0.387524L10.6346 4.68809L15.4615 5.37807C15.6923 5.41588 16 5.5293 16 5.81285Z"
+              />
+            </svg>
+          </span>
+          <span className="star-score">{data.saoBinhLuan}</span>
+        </div>
+        <div className="reviewer-country d-flex align-items-center">
+          <img
+            width="20"
+            height="20"
+            src="https://fiverr-dev-res.cloudinary.com/general_assets/flags/1f1e8-1f1ed.png"
+            alt="Country Flag"
+            className="country-flag"
+          />
+          <div className="ms-2 country-name">Switzerland</div>
+        </div>
+        <div className="comment">
+          <p>{data.noiDung}</p>
+        </div>
+        {data.ngayBinhLuan && dayjs(data.ngayBinhLuan).format("DD/MM/YYYY")}
+        <div className="reviewer-helpful d-flex align-items-center gap-2">
+          <div className="helpful-title">Helpful?</div>
+          <div className="helpful-thumb d-flex align-items-center gap-2">
+            <div className="yes d-flex align-items-center gap-1">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M11.89 14.75H1C0.59 14.75 0.25 14.41 0.25 14V8C0.25 7.59 0.59 7.25 1 7.25H3.46L6.05 0.72C6.16 0.43 6.44 0.25 6.75 0.25H7.67C8.59 0.25 9.34 0.98 9.34 1.87V5.45H13.17C14 5.45 14.78 5.84 15.27 6.48C15.73 7.1 15.87 7.87 15.66 8.6L14.39 12.93C14.08 13.99 13.06 14.74 11.9 14.74L11.89 14.75ZM4.75 13.25H11.89C12.38 13.25 12.81 12.95 12.94 12.52L14.21 8.19C14.32 7.81 14.16 7.52 14.06 7.39C13.85 7.12 13.53 6.96 13.16 6.96H8.58C8.17 6.96 7.83 6.62 7.83 6.21V1.87C7.83 1.81 7.76 1.75 7.66 1.75H7.25L4.74 8.08V13.25H4.75ZM1.75 13.25H3.25V8.75H1.75V13.25V13.25Z" />
+              </svg>
+              <span>Yes</span>
+            </div>
+            <div className="no d-flex align-items-center gap-1">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M9.25533 14.75H8.33533C7.41533 14.75 6.66533 14.03 6.66533 13.13L6.66533 9.55H2.83533C2.00533 9.55 1.22533 9.16 0.735326 8.52C0.275326 7.9 0.135326 7.13 0.345326 6.4L1.62533 2.06C1.93533 1 2.95533 0.25 4.11533 0.25L15.0053 0.25C15.4153 0.25 15.7553 0.59 15.7553 1V7C15.7553 7.41 15.4153 7.75 15.0053 7.75H12.5453L9.95533 14.28C9.84533 14.57 9.56533 14.75 9.25533 14.75ZM4.11533 1.75C3.62533 1.75 3.19533 2.05 3.06533 2.48L1.79533 6.81C1.68533 7.19 1.84533 7.48 1.94533 7.61C2.15533 7.88 2.47533 8.04 2.84533 8.04H7.42533C7.83533 8.04 8.17533 8.38 8.17533 8.79L8.17533 13.12C8.17533 13.17 8.24533 13.24 8.34533 13.24H8.75533L11.2653 6.91V1.75L4.11533 1.75ZM12.7553 6.25H14.2553V1.75L12.7553 1.75V6.25Z" />
+              </svg>
+              <span>No</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+  );
+};
+
+const RatingSection = ({ chiTietCongViec = {} }) => {
+  const [state, _setState] = useState({});
+  const setState = (data) => _setState((pre) => ({ ...pre, ...data }));
+  const {
+    binhLuan: { layBinhLuanTheoCongViec, binhLuan },
+  } = useDispatch();
+  const { auth } = useSelector((state) => state.auth);
+  const { dsBinhLuanTheoCongViec } = useSelector((state) => state.binhLuan);
+  useEffect(() => {
+    if (!chiTietCongViec.id) return;
+    layBinhLuanTheoCongViec(chiTietCongViec.id);
+  }, [chiTietCongViec?.id]);
+
+  const onChange = (key) => (e) => {
+    const value = e?.target?.value || e;
+    setState({ [key]: value });
+  };
+  const handleSubmit = async () => {
+    await binhLuan({
+      //   id: 0,
+      maCongViec: chiTietCongViec?.id,
+      maNguoiBinhLuan: auth.id,
+      ngayBinhLuan: dayjs().format("YYYY-MM-DD"),
+      noiDung: state.comment,
+      saoBinhLuan: state.rate,
+    });
+    layBinhLuanTheoCongViec(chiTietCongViec.id);
+  };
+
+  return (
+    <div className="rating-section">
+      <div className="review-count d-flex justify-content-between">
+        <div className="count d-flex align-items-center">
+          <h2 className="mb-0 me-2">{`${chiTietCongViec.congViec?.danhGia} Reviews`}</h2>
+          <div className="star d-flex align-items-center">
+            <Rate
+              allowHalf
+              disabled
+              value={chiTietCongViec.congViec?.saoCongViec}
+              style={{ color: "rgb(255, 179, 62)" }}
+            />
+            <p className="star-score">
+              {chiTietCongViec.congViec?.saoCongViec}
+            </p>
+          </div>
+        </div>
+        <div className="sort d-flex align-items-center">
+          <span className="pre-title">Sort By</span>
+          <select>
+            <option value="recent">Most Recent</option>
+            <option value="relevant">Most Relevant</option>
+          </select>
+        </div>
+      </div>
+      <div className="review-rating mt-3 row">
+        <div className="col-md-6 col-sm-12">
+          <div className="stars-counters">
+            <table>
+              <tbody>
+                {[
+                  { stars: 5, count: 144 },
+                  { stars: 4, count: 0 },
+                  { stars: 3, count: 0 },
+                  { stars: 2, count: 1 },
+                  { stars: 1, count: 0 },
+                ].map(({ stars, count }) => (
+                  <tr key={stars}>
+                    <td className="star-title-container">
+                      <button>{stars} Stars</button>
+                    </td>
+                    <td className="process-bar-container">
+                      <div
+                        className={`process-bar ${
+                          stars === 5
+                            ? "first"
+                            : stars === 4
+                            ? "second"
+                            : stars === 3
+                            ? "third"
+                            : stars === 2
+                            ? "fourth"
+                            : "fifth"
+                        }`}
+                      ></div>
+                    </td>
+                    <td className="star-num">({count})</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div className="col-sm-12 col-md-6">
+          <div className="ranking">
+            <h5>Rating Breakdown</h5>
+            <ul className="m-0 p-0">
+              {[
+                { label: "Seller communication level", score: 2 },
+                { label: "Recommend to a friend", score: 2 },
+                { label: "Service as described", score: 2 },
+              ].map(({ label, score }, index) => (
+                <li key={index} className="d-flex justify-content-between pb-2">
+                  <p>{label}</p>
+                  <div className="d-flex">
+                    <span className="star">
+                      <svg
+                        width="16"
+                        height="15"
+                        viewBox="0 0 16 15"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          fill="#ffb33e"
+                          fillRule="evenodd"
+                          clipRule="evenodd"
+                          d="M16 5.81285C16 5.98299 15.875 6.14367 15.75 6.26654L12.2596 9.61248L13.0865 14.3384C13.0962 14.4045 13.0962 14.4612 13.0962 14.5274C13.0962 14.7732 12.9808 15 12.7019 15C12.5673 15 12.4327 14.9527 12.3173 14.8866L8 12.656L3.68269 14.8866C3.55769 14.9527 3.43269 15 3.29808 15C3.01923 15 2.89423 14.7732 2.89423 14.5274C2.89423 14.4612 2.90385 14.4045 2.91346 14.3384L3.74038 9.61248L0.240385 6.26654C0.125 6.14367 0 5.98299 0 5.81285C0 5.5293 0.298077 5.41588 0.538462 5.37807L5.36539 4.68809L7.52885 0.387524C7.61539 0.207939 7.77885 0 8 0C8.22115 0 8.38462 0.207939 8.47115 0.387524L10.6346 4.68809L15.4615 5.37807C15.6923 5.41588 16 5.5293 16 5.81285Z"
+                        ></path>
+                      </svg>
+                    </span>
+                    <span className="star-score">{score}</span>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div className="review-filter mt-5">
+        <h3>Filters</h3>
+      </div>
+      <div className="review-comment">
+        <ul className="review-comment-list">
+          {dsBinhLuanTheoCongViec?.map((binhLuan) => (
+            <ReviewItem key={binhLuan.id} data={binhLuan} />
+          ))}
+        </ul>
+      </div>
+      <div className="add-comment py-4">
+        <div className="comment-rating mb-4 d-flex align-items-center justify-content-between">
+          <h2 className="m-0">Leave some comments</h2>
+          <div className="d-flex align-items-center gap-1">
+            <Rate
+              value={state.rate}
+              onChange={onChange("rate")}
+              style={{ color: "rgb(255, 179, 62)" }}
+            />
+            <h2 className="m-0">Rating</h2>
+          </div>
+        </div>
+        <Form onFinish={handleSubmit}>
+          <Form.Item
+            name="comment"
+            rules={[{ required: true, message: "Please input your comment!" }]}
+          >
+            <Input.TextArea
+              rows={5}
+              value={state.comment}
+              onChange={onChange("comment")}
+            />
+          </Form.Item>
+          <Form.Item>
+            <Button type="primary" htmlType="submit" className="comment-submit">
+              Comment
+            </Button>
+          </Form.Item>
+        </Form>
       </div>
     </div>
   );

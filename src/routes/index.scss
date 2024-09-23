@@ -1,0 +1,92 @@
+.admin-layout {
+  display: flex;
+  min-height: 100vh;
+  background-color: #d1d5db;
+
+  .admin-sidebar {
+    width: 16rem;
+    background-color: #1f2937; 
+    color: white;
+
+    .admin-nav {
+      padding: 2rem 0;
+      ul {
+        list-style: none;
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+      .admin-nav-item {
+        display: flex;
+        align-items: center;
+        padding: 0.5rem 1rem;
+        color: white;
+        transition: background-color 0.3s;
+        &:hover {
+          background-color: #4b5563; 
+        }
+
+        .admin-icon {
+          margin: 0 1rem; 
+        }
+      }
+
+      .admin-dropdown-button {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        padding: 0.5rem 1rem;
+        color: white;
+        background: none;
+        border: none;
+        text-align: left;
+
+        .admin-flex-1 {
+          flex: 1;
+        }
+      }
+
+      .admin-dropdown-menu {
+        padding: 0.5rem 0;
+        margin: 0;
+        list-style: none;
+
+        .admin-dropdown-item {
+          display: flex;
+          align-items: center;
+          padding: 0.5rem 3rem;
+          color: white;
+          transition: background-color 0.3s;
+
+          &:hover {
+            background-color: #4b5563; // Màu xám 700 của Tailwind
+          }
+        }
+      }
+    }
+  }
+
+  .admin-main-content {
+    flex: 1;
+
+    .admin-top-nav {
+      background-color: white;
+      border-bottom: 1px solid white;
+      padding: 1rem;
+
+      .admin-actions {
+        display: flex;
+        justify-content: flex-end;
+        width: 100%;
+      }
+    }
+
+    .admin-content-area {
+      margin: 1rem;
+      background-color: white;
+      padding: 1rem;
+    }
+  }
+  .admin-action-icon{
+    margin-right: 8px;
+  }
+}

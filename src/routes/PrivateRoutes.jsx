@@ -3,7 +3,6 @@ import {
   CaretUpOutlined,
   FileOutlined,
   LogoutOutlined,
-  UsergroupAddOutlined,
   UserOutlined,
   VideoCameraOutlined,
 } from "@ant-design/icons";
@@ -11,6 +10,7 @@ import { Avatar, Popover } from "antd";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link, Navigate, Outlet, useNavigate } from "react-router-dom";
+import "./index.scss";
 
 const PrivateRoute = () => {
   const [state, _setState] = useState({ moreMenu: false });
@@ -19,13 +19,13 @@ const PrivateRoute = () => {
   const navigate = useNavigate();
 
   const actions = [
-    {
-      icon: <UserOutlined />,
-      label: "Thông tin cá nhân",
-      onClick: () => {
-        navigate("/thongtincanhan");
-      },
-    },
+    // {
+    //   icon: <UserOutlined />,
+    //   label: "Thông tin cá nhân",
+    //   onClick: () => {
+    //     navigate("/thongtincanhan");
+    //   },
+    // },
     {
       icon: <LogoutOutlined />,
       label: "Đăng xuất",
@@ -36,89 +36,59 @@ const PrivateRoute = () => {
       },
     },
   ];
-  return auth?.id ? (
-    <div className="flex min-h-screen bg-gray-300">
-      {/* Sidebar */}
-      <aside className="w-64 bg-gray-800 text-white">
-        <nav className="space-y-2 font-medium">
+  return auth?.role === "ADMIN" ? (
+    <div className="admin-layout">
+      <aside className="admin-sidebar">
+        <nav className="admin-nav">
           <ul>
             <li>
-              <Link
-                to="/admin/quanlynguoidung"
-                className="flex items-center p-2 text-gray-900 rounded-lg text-white hover:bg-gray-700 group"
-              >
-                <UserOutlined className="mx-5 my-2" />
-                Users
+              <Link to="/admin/quan-ly-nguoi-dung" className="admin-nav-item">
+                Quản lý người dùng
               </Link>
             </li>
             <li>
-              <button
-                type="button"
-                className="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group text-white hover:bg-gray-700"
-                aria-controls="dropdown-example"
-                data-collapse-toggle="dropdown-example"
-                onClick={() => setState({ moreMenu: !state.moreMenu })}
-              >
-                <FileOutlined className="mx-5 my-2" />
-                <span className="flex-1 text-left rtl:text-right whitespace-nowrap">
-                  Films
-                </span>
-                {state.moreMenu ? <CaretUpOutlined /> : <CaretDownOutlined />}
-              </button>
-              {state.moreMenu && (
-                <ul id="dropdown-example" className="py-2 space-y-2">
-                  <li>
-                    <Link
-                      to="/admin/films"
-                      className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group text-white hover:bg-gray-700"
-                    >
-                      Films
-                    </Link>
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group text-white hover:bg-gray-700"
-                    >
-                      Add new
-                    </a>
-                  </li>
-                </ul>
-              )}
+              <Link to="/admin/quan-ly-cong-viec" className="admin-nav-item">
+                Quản lý công việc
+              </Link>
             </li>
             <li>
               <Link
-                to="/manage-users"
-                className="flex items-center p-2 text-gray-900 rounded-lg text-white hover:bg-gray-700 group"
+                to="/admin/quan-ly-loai-cong-viec"
+                className="admin-nav-item"
               >
-                <VideoCameraOutlined className="mx-5 my-2" />
-                TV Show
+                Quản lý loại công việc
               </Link>
             </li>
+            <li>
+              <Link to="/admin/quan-ly-dich-vu" className="admin-nav-item">
+                Quản lý dịch vụ
+              </Link>
+            </li>
+            {/* <li>
+              <Link to="/admin/quan-ly-dich-vu" className="admin-nav-item">
+                Quản lý dịch vụ
+              </Link>
+            </li> */}
           </ul>
         </nav>
       </aside>
-
-      {/* Main content area */}
-      <div className="flex-1 ">
-        <nav className="bg-white border-white">
-          <div className="max-w-screen-xl flex justify-end p-4">
-            <div className="w-1/6 flex justify-end">
-              <Popover
-                placement="bottomRight"
-                content={actions.map((action, index) => (
-                  <li key={index} onClick={action.onClick}>
-                    <span className="mr-4 cursor-pointer">{action.icon}</span>
-                    <span className="label cursor-pointer">{action.label}</span>
-                  </li>
-                ))}
-              >
-                <Avatar icon={<UserOutlined />} />
-              </Popover>
-            </div>
+      <div className="admin-main-content">
+        <nav className="admin-top-nav">
+          <div className="admin-actions">
+            <Popover
+              placement="bottomRight"
+              content={actions.map((action, index) => (
+                <li key={index} onClick={action.onClick}>
+                  <span className="admin-action-icon">{action.icon}</span>
+                  <span style={{ marginLeft: "12px" }}>{action.label}</span>
+                </li>
+              ))}
+            >
+              <Avatar icon={<UserOutlined />} />
+            </Popover>
           </div>
         </nav>
-        <main className="m-4 bg-white">
+        <main className="admin-content-area">
           <Outlet />
         </main>
       </div>

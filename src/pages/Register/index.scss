@@ -1,67 +1,94 @@
-.container-custom {
-  display: flex;
-  justify-content: flex-end;
-
-  .form-wrapper {
-    width: 50%;
-    height: 100vh;
-    padding: 2.5rem;
-    border-left: 1px solid #4b5563;
-
-    h1 {
-      font-size: 1.875rem;
-      margin-bottom: 2.5rem;
-      font-weight: 600;
-      text-align: center;
-    }
-
-    .form {
-      max-width: 28rem;
-      margin: 0 auto;
-
-      .input-group {
-        position: relative;
-        z-index: 0;
-        width: 100%;
-        margin-bottom: 0.5em;
-
-        input {
-          display: block;
-          padding: 0.5rem 0;
-          width: 100%;
-          font-size: 0.875rem;
-          color: #1f2937;
-          background: transparent;
-          border: 0;
-          border-bottom: 2px solid #d1d5db;
-          appearance: none;
-          transition: border-color 0.3s;
-
-          &:focus {
-            outline: none;
-            border-color: #4b5563;
-          }
+.signup {
+  margin-bottom: 50px;
+  margin-top: 20px;
+  .signup-content {
+    display: flex;
+    padding: 105px 0 0 0;
+    .signup-form {
+      padding-left: 35px;
+      padding-right: 10px;
+      overflow: hidden;
+      width: 50%;
+      .form-title-register {
+        color: #1dbf73;
+        margin-bottom: 30px;
+        margin-left: 120px;
+      }
+      .gender {
+        align-items: center;
+        display: flex;
+        gap: 30px;
+        margin-top: 30px;
+        .radio {
+          margin-left: -20px !important;
+          margin: 0.5rem;
+        }
+        .gender_inp {
+          align-items: center;
+          display: flex;
+          gap: 5px;
+          margin-left: 40px;
         }
       }
-
-      .button-group {
+      .mt-2-frm {
+        align-items: center;
+        display: flex;
+        gap: 14px;
+        margin-top: 0.5rem !important;
+      }
+      .term-service {
+        color: #1890ff !important;
+        margin-left: 1px;
+      }
+      .form-button {
         display: flex;
         justify-content: space-around;
-        margin-top: 2.5rem;
-
-        button {
-          color: black;
-          border: 1px solid #1f2937;
-          border-radius: 1.25rem;
-          padding: 0.5rem 1.25rem;
-          transition: background 0.3s, color 0.3s;
-
-          &:hover {
-            background: #64748b;
-            color: white;
-          }
-        }
+      }
+      .btn_register {
+        background: #1dbf73;
+        border: none;
+        color: #fff;
+        font-size: 16px;
+        font-weight: 500;
+        height: 50px;
+        margin: 15px 0;
+        transition: all 0.3s ease-in-out;
+        width: 100px;
+      }
+      .btn_register:hover {
+        background: #fff !important;
+        box-shadow: 2px 2px 4px 2px #1dbf73;
+        color: #1dbf73 !important;
       }
     }
+    .signup-image {
+      overflow: hidden;
+      width: 50%;
+      margin-top: 45px;
+      margin: 0 55px;
+      figure {
+        margin-bottom: 50px;
+        text-align: center;
+        margin: 0 0 1em;
+      }
+    }
+    .signup-image-link {
+      color: #1dbf73;
+      display: block;
+      font-size: 14px;
+      text-align: center;
+    }
+  }
+}
+@media screen and (min-width: 1024px) {
+  .container_form {
+    max-width: 1200px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .container_form {
+    max-width: 100%;
+    width: calc(100% - 30px);
   }
 }
