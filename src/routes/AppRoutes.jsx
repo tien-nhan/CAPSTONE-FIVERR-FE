@@ -7,10 +7,10 @@ import Information from "../pages/Information";
 import HomeCategories from "../pages/HomeCategories";
 import PublicPage from "../pages/PublicPage";
 import JobDetail from "../pages/JobDetail";
-// import QuanLyNguoiDung from "../pages/QuanLyNguoiDung";
-// import QuanLyCongViec from "../pages/QuanLyCongViec";
-// import QuanLyLoaiCongViec from "../pages/QuanLyLoaiCongViec";
-// import QuanLyDichVu from "../pages/QuanLyDichVu";
+import QuanLyNguoiDung from "../pages/QuanLyNguoiDung";
+import QuanLyCongViec from "../pages/QuanLyCongViec";
+import QuanLyLoaiCongViec from "../pages/QuanLyLoaiCongViec";
+import QuanLyDichVu from "../pages/QuanLyDichVu";
 
 const AppRoutes = () => {
   return (
@@ -101,7 +101,7 @@ const AppRoutes = () => {
           }
         />
       </Route>
-      {/* <Route
+      <Route
         path="/admin"
         element={
           <Suspense fallback={<div>loading...</div>}>
@@ -141,7 +141,7 @@ const AppRoutes = () => {
             </Suspense>
           }
         />
-      </Route> */}
+      </Route>
       <Route
         path="/thongtincanhan"
         element={

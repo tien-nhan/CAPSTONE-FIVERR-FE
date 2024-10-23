@@ -22,3 +22,50 @@ body {
   margin: 0 auto;
   width: 900px;
 }
+@media screen and (max-width: 576px) {
+  .footer .footer_warpper .footer_row .footer_bottom .right,
+  .left {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+}
+@media screen and (max-width: 768px) {
+  .footer .footer_warpper .footer_row .footer_bottom .right,
+  .left {
+    padding-top: 16px;
+  }
+}
+@media screen and (max-width: 576px) {
+  .header .header_wrapper .header_row .left .header_search .search_form .btn,
+  .header .header_wrapper .header_row .right {
+    display: none;
+  }
+}
+@media screen and (max-width: 768px) {
+  .header .header_wrapper .header_row .left .header_search .search_form .btn,
+  .header .header_wrapper .header_row .right {
+    display: none;
+  }
+}
+@media screen and (max-width: 768px) {
+  .signin-content,
+  .signup-content {
+    flex-direction: column;
+    justify-content: center;
+  }
+  .signup-image,
+  .signin-image {
+    margin-top: 50px;
+    order: 2;
+    width: auto !important;
+  }
+  .signup-form,
+  .signin-form {
+    margin-left: 0;
+    margin-right: 0;
+    order: 1;
+    padding: 0 30px !important;
+    width: auto !important;
+  }
+}

@@ -1,10 +1,10 @@
 .job-detail {
-  padding: 80px 0;
+  padding: 162px 0;
   position: relative !important;
   .check-out {
     border: 1px solid #dadbdd;
     position: -webkit-sticky;
-    position: sticky;
+    // position: sticky;
     top: 0;
     .check-out-header {
       ul {
@@ -357,5 +357,28 @@
   }
   .rating {
     font-weight: 500;
+  }
+  .mobile {
+    display: none;
+    position: relative;
+  }
+}
+@media screen and (max-width: 765px) {
+  .job-detail {
+    // padding-top: 140px;
+  }
+}
+@media screen and (max-width: 992px) {
+  .job-detail .container .col-7 {
+    width: 100%;
+  }
+  .job-detail .container .col-4 {
+    .check-out {
+      display: none;
+    }
+  }
+  .job-detail .container .mobile,
+  .job-detail .container .review-count {
+    display: block !important;
   }
 }

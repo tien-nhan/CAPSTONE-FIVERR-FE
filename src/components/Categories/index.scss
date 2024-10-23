@@ -199,4 +199,15 @@
   }
 }
 @media screen and (max-width: 1400px) {
+  .categories-topbar {
+    display: block;
+  }
+}
+@media screen and (max-width: 765px) {
+  .categories-topbar {
+    display: none;
+  }
+  .categories-sort{
+    margin-top: 50px;
+  }
 }
