@@ -36,67 +36,7 @@ const PrivateRoute = () => {
       },
     },
   ];
-  // return auth?.role === "ADMIN" ? (
-  //   <div className="admin-layout">
-  //     <aside className="admin-sidebar">
-  //       <nav className="admin-nav">
-  //         <ul>
-  //           <li>
-  //             <Link to="/admin/quan-ly-nguoi-dung" className="admin-nav-item">
-  //               Quản lý người dùng
-  //             </Link>
-  //           </li>
-  //           <li>
-  //             <Link to="/admin/quan-ly-cong-viec" className="admin-nav-item">
-  //               Quản lý công việc
-  //             </Link>
-  //           </li>
-  //           <li>
-  //             <Link
-  //               to="/admin/quan-ly-loai-cong-viec"
-  //               className="admin-nav-item"
-  //             >
-  //               Quản lý loại công việc
-  //             </Link>
-  //           </li>
-  //           <li>
-  //             <Link to="/admin/quan-ly-dich-vu" className="admin-nav-item">
-  //               Quản lý dịch vụ
-  //             </Link>
-  //           </li>
-  //           {/* <li>
-  //             <Link to="/admin/quan-ly-dich-vu" className="admin-nav-item">
-  //               Quản lý dịch vụ
-  //             </Link>
-  //           </li> */}
-  //         </ul>
-  //       </nav>
-  //     </aside>
-  //     <div className="admin-main-content">
-  //       <nav className="admin-top-nav">
-  //         <div className="admin-actions">
-  //           <Popover
-  //             placement="bottomRight"
-  //             content={actions.map((action, index) => (
-  //               <li key={index} onClick={action.onClick}>
-  //                 <span className="admin-action-icon">{action.icon}</span>
-  //                 <span style={{ marginLeft: "12px" }}>{action.label}</span>
-  //               </li>
-  //             ))}
-  //           >
-  //             <Avatar icon={<UserOutlined />} />
-  //           </Popover>
-  //         </div>
-  //       </nav>
-  //       <main className="admin-content-area">
-  //         <Outlet />
-  //       </main>
-  //     </div>
-  //   </div>
-  // ) : (
-  //   <Navigate to="/login" />
-  // );
-  return (
+  return auth?.role === "ADMIN" ? (
     <div className="admin-layout">
       <aside className="admin-sidebar">
         <nav className="admin-nav">
@@ -125,10 +65,10 @@ const PrivateRoute = () => {
               </Link>
             </li>
             {/* <li>
-          <Link to="/admin/quan-ly-dich-vu" className="admin-nav-item">
-            Quản lý dịch vụ
-          </Link>
-        </li> */}
+              <Link to="/admin/quan-ly-dich-vu" className="admin-nav-item">
+                Quản lý dịch vụ
+              </Link>
+            </li> */}
           </ul>
         </nav>
       </aside>
@@ -153,6 +93,8 @@ const PrivateRoute = () => {
         </main>
       </div>
     </div>
+  ) : (
+    <Navigate to="/login" />
   );
 };
 export default PrivateRoute;

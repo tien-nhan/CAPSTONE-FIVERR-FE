@@ -52,6 +52,7 @@ const Index = () => {
                     name="email"
                     required
                     placeholder="Your Email"
+                    onChange={onChange("email")}
                   />
                   <div className="text-danger position-absolute mt-1"></div>
                 </div>
@@ -69,6 +70,7 @@ const Index = () => {
                     name="password"
                     required
                     placeholder="Your Password"
+                    onChange={onChange("password")}
                   />
                   <div className="text-danger position-absolute mt-1"></div>
                   <button
